@@ -17,9 +17,9 @@ Secure connection and disconnection of Stellar wallet using Freighter extension.
 <img width="1911" height="969" alt="image" src="https://github.com/user-attachments/assets/55d5524f-90c4-4303-9433-192f7aa5d1cf" />
 
 ### 💰 Live XLM Balance Display
-
 Fetch and display real-time XLM balance from Stellar Testnet.
-<img width="450" height="749" alt="image" src="https://github.com/user-attachments/assets/373b9e4f-b10f-48bc-857b-281d1c2dc05e" />
+
+ <img width="450" height="749" alt="image" src="https://github.com/user-attachments/assets/373b9e4f-b10f-48bc-857b-281d1c2dc05e" />
 
 ### ⚡ Blockchain Transaction Flow
 
