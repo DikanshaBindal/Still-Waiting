@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Stellar Checkout Demo</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Scan & Go</h1>
+      <div id="wallet-controls" style="display: flex; gap: 10px; align-items: center;">
+        <button id="connect-wallet-btn" class="btn btn-primary" style="padding: 6px 12px; font-size: 0.8rem; border-radius: 20px; width: auto; height: auto;" onclick="connectWallet()">Connect Wallet</button>
+        <div id="wallet-info" class="wallet-badge" style="display: none;">
+          <span class="dot"></span> <span id="xlm-balance">XLM: --</span>
+          <button id="disconnect-wallet-btn" style="background: none; border: none; color: var(--danger-color); cursor: pointer; margin-left: 5px; font-size: 0.8rem; text-decoration: underline;" onclick="disconnectWallet()">Disconnect</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Error Toast -->
+    <div id="error-toast" style="display: none; position: absolute; top: 80px; left: 50%; transform: translateX(-50%); background: var(--danger-color); color: white; padding: 10px 20px; border-radius: 8px; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.5); font-weight: 600; font-size: 0.9rem;">
+      Error Message
+    </div>
+
+    <!-- Store Select View -->
+    <div id="store-select-view" class="view active">
+      <h2>Select Store</h2>
+      <p>Tap a nearby store to start your decentralized checkout session.</p>
+      
+      <div class="card" onclick="startShopping('Zara')">
+        <h3>Zara (Downtown)</h3>
+        <p style="margin-bottom:0; font-size:0.9rem; margin-top:5px;">Connected to Stellar Node</p>
+      </div>
+      
+      <div class="card" onclick="startShopping('Zudio')">
+        <h3>Zudio (Westfield)</h3>
+        <p style="margin-bottom:0; font-size:0.9rem; margin-top:5px;">Connected to Stellar Node</p>
+      </div>
+    </div>
+
+    <!-- Scanner View -->
+    <div id="scanner-view" class="view">
+      <h2 id="store-title">Scanner</h2>
+      <p>Scan product barcodes using your camera.</p>
+      
+      <div class="scanner-frame">
+        <div class="scanner-laser"></div>
+        <p style="text-align: center; color: rgba(255,255,255,0.7);">Camera Feed Placeholder</p>
+        <button class="btn btn-primary mock-scan-btn" onclick="mockScanItem()">Simulate Scan (Mock)</button>
+      </div>
+      
+      <button class="btn" style="background: var(--surface-color);" onclick="viewCart()">
+        View Cart (<span id="cart-count">0</span>)
+      </button>
+    </div>
+
+    <!-- Cart View -->
+    <div id="cart-view" class="view">
+      <h2>Your Cart</h2>
+      
+      <div id="cart-items-container" class="card" style="padding: 0; overflow: hidden; max-height: 40vh; overflow-y: auto;">
+        <!-- Items injected by JS -->
+      </div>
+      
+      <div class="cart-total-sect">
+        <span>Total:</span>
+        <span id="cart-total">$0.00</span>
+      </div>
+      
+      <p style="font-size: 0.8rem; text-align: center; margin-top: 10px;">Payment will be settled on the Stellar network in USDC.</p>
+      
+      <button class="btn btn-primary" style="margin-top: auto;" onclick="processPayment()">
+        Pay via Stellar
+      </button>
+      
+      <button class="btn" style="margin-top: 15px;" onclick="continueShopping()">
+        Back to Scanner
+      </button>
+    </div>
+
+    <!-- Payment Processing View -->
+    <div id="payment-processing-view" class="view">
+      <div class="loader-view">
+        <div class="spinner"></div>
+        <h2 style="margin-bottom: 10px;">Signing Transaction...</h2>
+        <p id="payment-status-text">Submitting to Horizon API</p>
+      </div>
+    </div>
+
+    <!-- Receipt / Exit View -->
+    <div id="receipt-view" class="view">
+      <h2 style="color: var(--success-color); text-align: center;">Payment Successful!</h2>
+      <p style="text-align: center;">Show this QR code at the exit gate. It is tied to your on-chain receipt.</p>
+      
+      <div class="qr-container">
+        <!-- Mock visual QR -->
+        <div class="qr-code"></div>
+        <p style="font-weight: bold; margin-bottom: 5px;">TX Hash:</p>
+        <div class="tx-hash" id="tx-hash-display"></div>
+      </div>
+      
+      <div class="card" style="text-align: center; margin-top: auto;">
+        <p style="margin-bottom: 0; font-size: 0.9rem;">Gate Scanner will instantly verify this hash on the Stellar ledger.</p>
+      </div>
+      
+      <button class="btn" style="margin-top: 15px;" onclick="resetApp()">
+        Finish & Close
+      </button>
+    </div>
+
+    <!-- Footer logo just for vibe -->
+    <div class="stellar-tag">
+      Powered by Stellar Blockchain
+    </div>
+    
+    <div style="text-align: center; margin-top: 15px; margin-bottom: 20px;">
+      <a href="guard.html" style="color: var(--text-secondary); font-size: 0.8rem; text-decoration: underline;">Switch to Guard View</a>
+    </div>
+  </div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

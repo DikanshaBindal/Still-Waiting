@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Guard Scanner - Stellar Checkout</title>
+  <link rel="stylesheet" href="index.css">
+  <style>
+    /* Specific overrides for Guard UI */
+    #app {
+      background: radial-gradient(circle at top right, rgba(46, 160, 67, 0.1), transparent 40%),
+                  radial-gradient(circle at bottom left, rgba(218, 54, 51, 0.05), transparent 40%);
+    }
+    .status-card {
+      text-align: center;
+      padding: 30px;
+    }
+    .check-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    .valid { color: var(--success-color); }
+    .invalid { color: var(--danger-color); }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Guard Post</h1>
+      <div class="wallet-badge" style="border-color: var(--success-color);">
+        <span class="dot"></span> <span>Node Linked</span>
+      </div>
+    </header>
+
+    <!-- Error Toast -->
+    <div id="error-toast" style="display: none; position: absolute; top: 80px; left: 50%; transform: translateX(-50%); background: var(--danger-color); color: white; padding: 10px 20px; border-radius: 8px; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.5); font-weight: 600; font-size: 0.9rem;">
+      Error Message
+    </div>
+
+    <!-- Scan View -->
+    <div id="scan-view" class="view active">
+      <h2>Verify Customer Exit</h2>
+      <p>Scan the customer's QR code or enter the Stellar Transaction Hash to verify payment.</p>
+      
+      <div class="scanner-frame" style="border-color: rgba(46, 160, 67, 0.5);">
+        <div class="scanner-laser" style="background: var(--success-color); box-shadow: 0 0 10px 2px rgba(46, 160, 67, 0.6);"></div>
+        <p style="text-align: center; color: rgba(255,255,255,0.7);">Point at Customer's Phone</p>
+      </div>
+      
+      <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+        <input type="text" id="tx-hash-input" placeholder="Paste TX Hash (Optional)" style="flex: 1; padding: 12px; border-radius: 8px; border: 1px solid var(--surface-border); background: rgba(0,0,0,0.3); color: white; outline: none;">
+      </div>
+
+      <button class="btn btn-primary" style="background: var(--success-color); box-shadow: 0 4px 15px rgba(46, 160, 67, 0.3);" onclick="verifyTransaction()">
+        Verify Receipt
+      </button>
+    </div>
+
+    <!-- Processing View -->
+    <div id="processing-view" class="view">
+      <div class="loader-view">
+        <div class="spinner" style="border-top-color: var(--success-color);"></div>
+        <h2>Querying Ledger...</h2>
+        <p>Connecting to testnet Horizon node</p>
+      </div>
+    </div>
+
+    <!-- Result View -->
+    <div id="result-view" class="view">
+      <div class="card status-card" id="status-card-inner">
+        <!-- Injected via JS -->
+      </div>
+      
+      <button class="btn" style="margin-top: auto;" onclick="resetScanner()">
+        Scan Next Customer
+      </button>
+    </div>
+
+    <div class="stellar-tag">
+      Powered by Stellar Blockchain
+    </div>
+
+    <div style="text-align: center; margin-top: 15px; margin-bottom: 20px;">
+      <a href="index.html" style="color: var(--text-secondary); font-size: 0.8rem; text-decoration: underline;">Switch to User App View</a>
+    </div>
+  </div>
+
+  <script type="module" src="/guard.js"></script>
+</body>
+</html>
