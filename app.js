@@ -1,5 +1,6 @@
 import { isConnected, getPublicKey, signTransaction, setAllowed } from '@stellar/freighter-api';
 import * as StellarSdk from '@stellar/stellar-sdk';
+import '@splinetool/viewer';
 
 // Initialize Stellar Testnet Horizon Client
 const server = new StellarSdk.Horizon.Server('https://horizon-testnet.stellar.org');

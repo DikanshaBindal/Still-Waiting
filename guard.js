@@ -1,4 +1,5 @@
 import * as StellarSdk from '@stellar/stellar-sdk';
+import '@splinetool/viewer';
 
 const server = new StellarSdk.Horizon.Server('https://horizon-testnet.stellar.org');
 
