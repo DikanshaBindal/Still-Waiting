@@ -1,17 +1,20 @@
-# Stellar Integration Tasks
+# Level 2 Upgrade execution
 
-- [x] Initialize project with Vite.
-  - [x] Generate `package.json` with npm scripts structure.
-  - [x] Install `@stellar/stellar-sdk`, `@stellar/freighter-api`, and `vite`.
-- [x] UI Updates in `index.html` and `index.css`.
-  - [x] Add Connect / Disconnect wallet buttons.
-  - [x] Create UI for dynamic XLM balance.
-  - [x] Add toast notification container for errors.
-- [x] Application Logic & Blockchain (`app.js`).
-  - [x] Convert to an ES module logic flow.
-  - [x] Implement `connectWallet` logic using Freighter API.
-  - [x] Implement balance fetching from Horizon Testnet.
-  - [x] Update `processPayment` to create a real Stellar transaction (0.5 XLM).
-  - [x] Hand off to Freighter to sign, then submit network.
-  - [x] Render transaction block hash to the receipt UI.
-- [x] Ensure proper error handling and modularity.
+- [x] Smart Contract Implementation (Rust)
+  - [x] Create `contracts/receipt_store/Cargo.toml`.
+  - [x] Create `contracts/receipt_store/src/lib.rs` (Soroban logic storing `wallet`, `amount`, `timestamp`, `timestamp`).
+- [x] Frontend Contract Interaction
+  - [x] Implement `StellarSdk.Operation.invokeHostFunction` targeting a constant placeholder `CONTRACT_ID`.
+  - [x] Build XDR arguments (ScVal) to pass securely.
+  - [x] Add the execution to `processPayment()`.
+  - [x] Display confirmation of successful on-chain receipt storing to the blockchain receipt screen.
+- [x] Multi-Wallet & UI Extensibility
+  - [x] Implement specific "Switch Wallet" flow (forcing reconnect status).
+  - [x] Display balances dynamically for any switched wallet.
+- [x] Granular Error Handling
+  - [x] Handle **wallet connection rejected** errors smoothly.
+  - [x] Handle **insufficient balance** pre-flight and Horizon tx failure.
+  - [x] Handle **transaction rejected** (User declines Freighter).
+  - [x] Handle **network failure**.
+- [x] Validation Pipeline
+  - [x] Verify `vite.config.js` or standard Vite root exports perfectly with `npm run build` targeting Vercel deployment.
