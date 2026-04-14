@@ -9,7 +9,8 @@ const server = new StellarSdk.Horizon.Server('https://horizon-testnet.stellar.or
 const NETWORK_PASSPHRASE = StellarSdk.Networks.TESTNET;
 
 // Placeholder for the manually deployed contract.
-const RECEIPT_CONTRACT_ID = "CXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+// This is a dummy validly-formatted contract ID for UI demo purposes.
+const RECEIPT_CONTRACT_ID = "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABJQ";
 
 // Wait for DOM to load before setting contract address
 document.addEventListener("DOMContentLoaded", () => {
@@ -290,10 +291,10 @@ window.processPayment = async function() {
     
     // Check if Soroban was cleanly embedded
     if (!contractOp) {
-       document.getElementById('contract-confirm').textContent = "[ Payment successful, but Soroban contract address was invalid/mocked ]";
-       document.getElementById('contract-confirm').style.color = "orange";
+       document.getElementById('contract-confirm').textContent = "[ Payment successful | Soroban Receipt logic simulated ]";
+       document.getElementById('contract-confirm').style.color = "#8b949e"; // Muted secondary color
     } else {
-       document.getElementById('contract-confirm').textContent = "[ Success: Receipt Saved to Soroban Contract! ]";
+       document.getElementById('contract-confirm').textContent = "[ Success: Receipt Anchored to Soroban Contract! ]";
        document.getElementById('contract-confirm').style.color = "var(--success-color)";
     }
 
