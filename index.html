@@ -8,17 +8,17 @@
 </head>
 <body>
   <div id="app">
-    <div class="spline-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
-      <spline-viewer loading-anim-type="spinner-small-dark" url="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"></spline-viewer>
-    </div>
-    
     <header>
-      <h1>Scan & Go</h1>
+      <h1>Still-Waiting</h1>
       <div id="wallet-controls" style="display: flex; gap: 10px; align-items: center;">
-        <button id="connect-wallet-btn" class="btn btn-primary" style="padding: 6px 12px; font-size: 0.8rem; border-radius: 20px; width: auto; height: auto;" onclick="connectWallet()">Connect Wallet</button>
-        <div id="wallet-info" class="wallet-badge" style="display: none;">
-          <span class="dot"></span> <span id="xlm-balance">XLM: --</span>
-          <button id="disconnect-wallet-btn" style="background: none; border: none; color: var(--danger-color); cursor: pointer; margin-left: 5px; font-size: 0.8rem; text-decoration: underline;" onclick="disconnectWallet()">Disconnect</button>
+        <button id="connect-wallet-btn" class="btn btn-primary" style="padding: 6px 12px; font-size: 0.8rem; border-radius: 20px; width: auto; height: auto;" onclick="showWalletModal()">Connect Wallet</button>
+        <div id="wallet-info" class="wallet-badge" style="display: none; flex-direction: column; align-items: flex-end; gap: 4px; background: rgba(0,0,0,0.6); padding: 8px 15px;">
+          <div style="display: flex; gap: 8px; align-items: center;">
+             <span class="dot"></span>
+             <span id="wallet-address" style="font-family: monospace; font-size: 0.85rem; color: #fff;"></span>
+             <button id="disconnect-wallet-btn" title="Disconnect & Switch Wallet" style="background: rgba(255,255,255,0.1); border: 1px solid var(--surface-border); border-radius: 12px; color: var(--text-primary); cursor: pointer; padding: 2px 8px; font-size: 0.75rem;" onclick="disconnectWallet()">Switch</button>
+          </div>
+          <div style="font-weight: 700; color: var(--accent-color); font-size: 1rem;" id="xlm-balance">XLM: --</div>
         </div>
       </div>
     </header>
@@ -33,14 +33,16 @@
       <h2>Select Store</h2>
       <p>Tap a nearby store to start your decentralized checkout session.</p>
       
-      <div class="card" onclick="startShopping('Zara')">
-        <h3>Zara (Downtown)</h3>
-        <p style="margin-bottom:0; font-size:0.9rem; margin-top:5px;">Connected to Stellar Node</p>
-      </div>
-      
-      <div class="card" onclick="startShopping('Zudio')">
-        <h3>Zudio (Westfield)</h3>
-        <p style="margin-bottom:0; font-size:0.9rem; margin-top:5px;">Connected to Stellar Node</p>
+      <div class="store-grid">
+        <div class="card" onclick="startShopping('Zara')">
+          <h3>Zara (Downtown)</h3>
+          <p style="margin-bottom:0; font-size:0.9rem; margin-top:5px;">Connected to Stellar Node</p>
+        </div>
+        
+        <div class="card" onclick="startShopping('Zudio')">
+          <h3>Zudio (Westfield)</h3>
+          <p style="margin-bottom:0; font-size:0.9rem; margin-top:5px;">Connected to Stellar Node</p>
+        </div>
       </div>
     </div>
 
@@ -64,7 +66,7 @@
     <div id="cart-view" class="view">
       <h2>Your Cart</h2>
       
-      <div id="cart-items-container" class="card" style="padding: 0; overflow: hidden; max-height: 40vh; overflow-y: auto;">
+      <div id="cart-items-container" class="cart-list-container">
         <!-- Items injected by JS -->
       </div>
       
@@ -88,7 +90,7 @@
     <div id="payment-processing-view" class="view">
       <div class="loader-view">
         <div class="spinner"></div>
-        <h2 style="margin-bottom: 10px;">Signing Transaction...</h2>
+        <h2 id="payment-status-title" style="margin-bottom: 10px;">Signing Transaction...</h2>
         <p id="payment-status-text">Submitting to Horizon API</p>
       </div>
     </div>
@@ -98,11 +100,16 @@
       <h2 style="color: var(--success-color); text-align: center;">Payment Successful!</h2>
       <p style="text-align: center;">Show this QR code at the exit gate. It is tied to your on-chain receipt.</p>
       
-      <div class="qr-container">
+      <div class="qr-container" id="qr-block">
         <!-- Mock visual QR -->
         <div class="qr-code"></div>
-        <p style="font-weight: bold; margin-bottom: 5px;">TX Hash:</p>
-        <div class="tx-hash" id="tx-hash-display"></div>
+        <p style="font-weight: bold; margin-bottom: 5px;">Payment TX Hash:</p>
+        <div class="tx-hash" id="tx-hash-display" style="font-size: 0.70rem;"></div>
+        
+        <p style="font-weight: bold; margin-top: 15px; margin-bottom: 5px;">Wallet Address:</p>
+        <div class="tx-hash" style="font-size: 0.70rem;" id="receipt-wallet-addr"></div>
+        
+        <div id="contract-confirm" style="font-size:0.8rem; color:var(--success-color); margin-top:10px; font-weight: bold;">[ Soroban Receipt Anchored ]</div>
       </div>
       
       <div class="card" style="text-align: center; margin-top: auto;">
@@ -114,14 +121,32 @@
       </button>
     </div>
 
-    <!-- Footer logo just for vibe -->
-    <div class="stellar-tag">
-      Powered by Stellar Blockchain
+    <!-- Footer links area grouped safely -->
+    <div style="margin-top: auto; padding: 20px 0; display: flex; flex-direction: column; gap: 10px;">
+      <div style="text-align: center; color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 5px;">
+         <span style="border: 1px solid var(--surface-border); padding: 5px 10px; border-radius: 10px; background: rgba(0,0,0,0.5);">Contract: <code id="ui-contract-address" style="color: var(--accent-color);">Loading...</code></span>
+      </div>
+      <div class="stellar-tag" style="margin-top: 0;">
+        Powered by Stellar Blockchain
+      </div>
+      <div style="text-align: center;">
+        <a href="guard.html" style="color: var(--text-secondary); font-size: 0.8rem; text-decoration: none; padding: 5px 15px; border: 1px solid var(--surface-border); border-radius: 20px; background: rgba(255,255,255,0.05);">Switch to Guard View</a>
+      </div>
     </div>
-    
-    <div style="text-align: center; margin-top: 15px; margin-bottom: 20px;">
-      <a href="guard.html" style="color: var(--text-secondary); font-size: 0.8rem; text-decoration: underline;">Switch to Guard View</a>
+    <!-- Wallet Connect Modal -->
+    <div id="wallet-modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 1000; justify-content: center; align-items: center;">
+      <div class="card" style="width: 90%; max-width: 400px; text-align: center; position: relative;">
+        <button onclick="closeWalletModal()" style="position: absolute; right: 20px; top: 20px; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;">&times;</button>
+        <h2 style="margin-top: 10px; margin-bottom: 25px;">Connect Wallet</h2>
+        
+        <button class="btn" style="margin-bottom: 15px; background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);" onclick="connectWallet()">
+          <span style="font-size: 1.2rem; font-weight: bold;">⛴ Freighter</span>
+        </button>
+        
+        <p style="font-size: 0.8rem; margin-top: 20px; margin-bottom: 0;">More wallets coming soon.</p>
+      </div>
     </div>
+
   </div>
 
   <script type="module" src="/app.js"></script>
