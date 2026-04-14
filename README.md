@@ -143,8 +143,7 @@ Transaction hash stored using Soroban contract.
 ### 6️⃣ Exit Verification QR
 
 Blockchain receipt acts as proof of purchase.
-<img width="1919" height="1042" alt="image" src="https://github.com/user-attachments/assets/5bd08b86-1d66-4f36-972e-616c43788b95" />
-
+<img width="1919" height="1035" alt="image" src="https://github.com/user-attachments/assets/05fbade3-0c14-4ee6-b3e8-7c2256809e79" />
 
 ---
 
