@@ -10,7 +10,7 @@ This project demonstrates real blockchain integration using **Stellar SDK**, **F
 # 🌐 Live Demo
 
 👉 [https://still-waiting-one.vercel.app/](https://still-waiting-one.vercel.app/)
-## 🎥 Demo Video (Level 3 Requirement)
+## 🎥 Demo Video
 
 1-minute walkthrough showing:
 
@@ -56,7 +56,7 @@ No billing counter required.
 
 ---
 
-# 🧠 Key Features (Level 2)
+# 🧠 Key Features
 
 ### Multi-Wallet Support
 
@@ -199,7 +199,7 @@ Still-Waiting
 ├── vite.config.js
 └── README.md
 ```
-## 🧪 Tests (Level 3 Requirement)
+## 🧪 Tests
 
 This project includes automated unit tests using **Vitest** to verify core functionality of the mini dApp.
 <img width="1307" height="607" alt="Screenshot 2026-04-15 103951" src="https://github.com/user-attachments/assets/5191da3e-94c2-430d-bef1-3b99c19c877c" />
@@ -243,8 +243,10 @@ npm run build
 ```
 
 ---
+---
 
-# 🔗 Stellar Testnet Setup
+```
+## 🔗 Stellar Testnet Setup
 
 Requirements:
 
@@ -260,7 +262,7 @@ Minimum balance required: 1 XLM (testnet)
 
 ---
 
-# 🔮 Future Scope
+## 🔮 Future Scope
 
 real barcode scanning via camera API
 store inventory integration
