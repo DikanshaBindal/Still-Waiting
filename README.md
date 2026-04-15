@@ -1,4 +1,4 @@
-# 🛒 Still-Waiting (Level 2 – Stellar dApp)
+# 🛒 Still-Waiting (Stellar dApp)
 
 A decentralized **zero-queue checkout experience** built on the **Stellar Testnet**.
 Still-Waiting removes the need to stand in billing lines by enabling users to scan items, pay instantly via blockchain, and receive an on-chain verifiable receipt.
@@ -10,6 +10,18 @@ This project demonstrates real blockchain integration using **Stellar SDK**, **F
 # 🌐 Live Demo
 
 👉 [https://still-waiting-one.vercel.app/](https://still-waiting-one.vercel.app/)
+## 🎥 Demo Video (Level 3 Requirement)
+
+1-minute walkthrough showing:
+
+• wallet connect  
+• product scan simulation  
+• payment transaction via Stellar  
+• transaction confirmation  
+• QR receipt generation  
+
+👉 Video:
+https://github.com/user-attachments/assets/1c5a30ff-c0ba-4e0d-b895-a6574afa97a6
 
 ---
 
@@ -187,7 +199,20 @@ Still-Waiting
 ├── vite.config.js
 └── README.md
 ```
+## 🧪 Tests (Level 3 Requirement)
 
+This project includes automated unit tests using **Vitest** to verify core functionality of the mini dApp.
+<img width="1307" height="607" alt="Screenshot 2026-04-15 103951" src="https://github.com/user-attachments/assets/5191da3e-94c2-430d-bef1-3b99c19c877c" />
+### Tests included
+- cart calculation logic
+- transaction object validation
+- wallet formatting checks
+- basic application flow validation
+
+### Run tests locally
+
+```bash
+npm run test
 ---
 
 # 🧪 How to Run Locally
@@ -235,19 +260,7 @@ Minimum balance required: 1 XLM (testnet)
 
 ---
 
-# ✅ Level 2 Requirements Checklist
-
-✔ Contract deployed on testnet
-✔ Contract called from frontend
-✔ Multi-wallet interaction support
-✔ Transaction status visible
-✔ Minimum 2+ meaningful commits
-✔ Live deployed web app
-✔ Error handling implemented
-
----
-
-# 🔮 Future Scope (Level 3+)
+# 🔮 Future Scope
 
 real barcode scanning via camera API
 store inventory integration
