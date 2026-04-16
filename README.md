@@ -172,6 +172,12 @@ Transaction hash stored using Soroban contract.
 
 Blockchain receipt acts as proof of purchase.
 <img width="1919" height="1035" alt="image" src="https://github.com/user-attachments/assets/05fbade3-0c14-4ee6-b3e8-7c2256809e79" />
+---
+## 📱 Mobile Responsive View (Level 4)
+
+Still-Waiting UI adapts seamlessly across mobile devices.
+
+Mobile UI : <img width="527" height="967" alt="image" src="https://github.com/user-attachments/assets/8c760899-09b4-4fcd-85c2-7f323a08acd8" />
 
 ---
 
@@ -195,6 +201,35 @@ verifiable transaction history
 decentralized purchase record
 
 ---
+## 🪙 Receipt Token Contract (Level 4 Upgrade)
+
+Still-Waiting now includes a Soroban token contract that mints a blockchain-based receipt token after successful payment.
+
+Token Name:
+StillWaitingReceiptToken
+
+Symbol:
+SWRT
+
+Each successful checkout triggers an inter-contract call from the receipt_store contract to the receipt_token contract.
+
+Purpose:
+• acts as digital proof of purchase
+• enables loyalty programs
+• enables future NFT receipt upgrade
+• demonstrates Soroban composability
+
+### Contract Architecture
+
+payment confirmed
+↓
+receipt_store contract
+↓
+inter-contract call
+↓
+receipt_token contract
+↓
+token minted to wallet
 
 # 🏗 Project Structure
 
@@ -229,7 +264,6 @@ This project includes automated unit tests using **Vitest** to verify core funct
 
 ```bash
 npm run test
----
 
 # 🧪 How to Run Locally
 
