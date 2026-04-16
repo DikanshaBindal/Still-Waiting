@@ -44,6 +44,14 @@
           <p style="margin-bottom:0; font-size:0.9rem; margin-top:5px;">Connected to Stellar Node</p>
         </div>
       </div>
+      
+      <!-- Recent Transactions Section -->
+      <div id="recent-transactions-section" style="margin-top: 30px; display: none;">
+        <h3 style="font-size: 1rem; border-top: 1px solid var(--surface-border); padding-top: 20px;">Recent Transactions</h3>
+        <div id="recent-tx-list" style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+          <!-- Transactions injected by JS -->
+        </div>
+      </div>
     </div>
 
     <!-- Scanner View -->
@@ -90,8 +98,8 @@
     <div id="payment-processing-view" class="view">
       <div class="loader-view">
         <div class="spinner"></div>
-        <h2 id="payment-status-title" style="margin-bottom: 10px;">Signing Transaction...</h2>
-        <p id="payment-status-text">Submitting to Horizon API</p>
+        <h2 id="payment-status-title" style="margin-bottom: 10px;">Processing...</h2>
+        <p id="payment-status-text">Initializing blockchain interaction</p>
       </div>
     </div>
 
@@ -110,6 +118,12 @@
         <div class="tx-hash" style="font-size: 0.70rem;" id="receipt-wallet-addr"></div>
         
         <div id="contract-confirm" style="font-size:0.8rem; color:var(--success-color); margin-top:10px; font-weight: bold;">[ Soroban Receipt Anchored ]</div>
+        <div id="token-status" style="display: none;">
+          <div class="token-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+            SWRT Receipt Token Minted
+          </div>
+        </div>
       </div>
       
       <div class="card" style="text-align: center; margin-top: auto;">

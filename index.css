@@ -323,7 +323,90 @@ p {
   pointer-events: none;
 }
   
-.store-grid { display: flex; flex-direction: column; gap: 15px; }  
+/* Token Receipt Badge */
+.token-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(179, 89, 244, 0.1);
+  border: 1px solid rgba(179, 89, 244, 0.3);
+  color: #b359f4;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 10px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(179, 89, 244, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(179, 89, 244, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(179, 89, 244, 0); }
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  header {
+    padding: 15px 20px;
+  }
+  
+  header h1 {
+    font-size: 1.2rem;
+  }
+
+  .view {
+    width: 95%;
+    padding: 25px 20px;
+    border-radius: 15px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .scanner-frame {
+    height: 250px;
+  }
+
+  .qr-container {
+    padding: 20px;
+  }
+
+  .qr-code {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .wallet-badge {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    overflow-y: auto;
+  }
+  
+  header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .view {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    padding: 12px 18px;
+    font-size: 1rem;
+  }
+}
+
+.store-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }  
 .card { margin-bottom: 0 !important; } 
   
-body { background-image: radial-gradient(circle at 15%% 50%%, rgba(88, 166, 255, 0.15), transparent 35%%), radial-gradient(circle at 85%% 30%%, rgba(46, 160, 67, 0.1), transparent 35%%), radial-gradient(circle at 50%% 100%%, rgba(139, 148, 158, 0.1), transparent 40%%) !important; } 
+body { background-image: radial-gradient(circle at 15% 50%, rgba(88, 166, 255, 0.15), transparent 35%), radial-gradient(circle at 85% 30%, rgba(46, 160, 67, 0.1), transparent 35%), radial-gradient(circle at 50% 100%, rgba(139, 148, 158, 0.1), transparent 40%) !important; } 
