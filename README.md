@@ -188,24 +188,17 @@ Mobile UI : <img width="527" height="967" alt="image" src="https://github.com/us
 
 ---
 
-# 📜 Smart Contract
+### 7️⃣ SWRT Receipt Token (Level 4 Feature)
+Each purchase now mints a unique **StillWaiting Receipt Token (SWRT)**. This tokenized receipt acts as:
+- Digital proof of ownership
+- Loyalty record
+- On-chain verifiable return authorization
 
-Contract stores receipt metadata on-chain:
-
-```rust
-create_receipt(
-    receipt_id: String,
-    wallet: Address,
-    amount: i128,
-    timestamp: u64
-)
-```
-
-Ensures:
-
-tamper-proof receipt
-verifiable transaction history
-decentralized purchase record
+### 8️⃣ Inter-Contract Communication (Level 4 Feature)
+The system architecture now uses **Inter-Contract Invocations**:
+1. **ReceiptStore** contract receives payment details.
+2. **ReceiptStore** calls the **ReceiptToken** contract.
+3. **ReceiptToken** mints 1 SWRT to the user's wallet.
 
 ---
 ## 🪙 Receipt Token Contract (Level 4 Upgrade)
@@ -238,8 +231,9 @@ receipt_token contract
 ↓
 token minted to wallet
 
-# 🏗 Project Structure
+# 🏗 Architecture (Level 4)
 
+HEAD
 ```
 Still-Waiting
 │
@@ -297,41 +291,41 @@ Build production version:
 
 ```
 npm run build
+```mermaid
+graph TD
+    A[User Wallet] -->|Payment| B(Stellar Network)
+    B -->|Success| C[ReceiptStore Contract]
+    C -->|Inter-Contract Call| D[ReceiptToken Contract]
+    D -->|Mint SWRT| A
+6dc7c2d (docs: update README with Level 4 architecture and features)
 ```
 
 ---
----
 
-```
-## 🔗 Stellar Testnet Setup
+# ⚙️ CI/CD Pipeline (Level 4)
 
-Requirements:
-
-Freighter wallet installed
-Freighter network set to TESTNET
-Testnet XLM funded via Friendbot
-
-Friendbot:
-
-[https://friendbot.stellar.org/](https://friendbot.stellar.org/)
-
-Minimum balance required: 1 XLM (testnet)
+This project uses **GitHub Actions** for continuous integration.
+On every push/pull-request, the system automatically:
+- Installs dependencies (`npm install`)
+- Validates the build (`npm run build`)
+- Executes automated tests (`npm run test`)
 
 ---
 
-## 🔮 Future Scope
+# 📱 Mobile Responsiveness (Level 4)
 
-real barcode scanning via camera API
-store inventory integration
-NFT-based purchase receipts
-loyalty rewards smart contract
-offline sync architecture
-merchant dashboard
-zk-proof based purchase validation
+The application is fully optimized for mobile devices, ensuring a seamless scanning experience in-store.
+Validation was performed using browser mobile simulation (iPhone 12/Pixel 5).
 
 ---
+
+# 🛠 Tech Stack (Updated)
+- **Blockchain**: Stellar Testnet, Soroban (Rust)
+- **Smart Contracts**: Inter-contract calls, Custom Token Logic
+- **CI/CD**: GitHub Actions
+- **Styling**: Glassmorphism, Responsive CSS3
+- **Testing**: Vitest
 
 # 📄 License
 
 This project is developed for educational and research purposes as part of Stellar Bootcamp.
-
