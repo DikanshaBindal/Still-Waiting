@@ -92,6 +92,22 @@ Handles common blockchain interaction errors:
 Simulated scanner removes need for physical billing counter.
 
 ---
+## ⚙️ CI/CD Pipeline
+
+Automated build and test pipeline runs on every push using GitHub Actions.
+<img width="1900" height="1052" alt="image" src="https://github.com/user-attachments/assets/f0f06f02-0cdb-4a13-b2a4-c0108476167e" />
+
+Pipeline steps:
+- install dependencies
+- run tests (Vitest)
+- build project
+
+Workflow status:
+
+![CI Status](https://github.com/DikanshaBindal/Still-Waiting/actions/workflows/main.yml/badge.svg)
+
+View pipeline details:
+https://github.com/DikanshaBindal/Still-Waiting/actions
 
 # 🛠 Tech Stack
 
