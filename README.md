@@ -109,6 +109,13 @@ Workflow status:
 View pipeline details:
 https://github.com/DikanshaBindal/Still-Waiting/actions
 
+### Continuous Deployment (CD)
+Vercel automatically deploys the latest version whenever changes are pushed to GitHub.
+
+This ensures the application is always live and production-ready.
+
+![CD Deployment]<img width="1906" height="989" alt="image" src="https://github.com/user-attachments/assets/35289565-0f33-44fb-ae31-786df9140df0" />
+
 # 🛠 Tech Stack
 
 ### Blockchain Layer
@@ -323,7 +330,6 @@ merchant dashboard
 zk-proof based purchase validation
 
 ---
-Update test for CI/CD verification
 
 # 📄 License
 
