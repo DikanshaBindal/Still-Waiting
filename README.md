@@ -323,6 +323,7 @@ merchant dashboard
 zk-proof based purchase validation
 
 ---
+Update test for CI/CD verification
 
 # 📄 License
 
