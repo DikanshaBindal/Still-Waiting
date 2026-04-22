@@ -10,38 +10,44 @@ pub enum DataKey {
     Balance(Address),
 }
 
+/// ReceiptTokenContract is a simplified Soroban token contract representing 
+/// a digital proof of purchase for the Still-Waiting checkout system.
 #[contract]
 pub struct ReceiptTokenContract;
 
 #[contractimpl]
 impl ReceiptTokenContract {
+    /// Initializes the token contract with an administrator and default metadata.
+    /// Panics if the contract has already been initialized.
     pub fn initialize(env: Env, admin: Address) {
         if env.storage().persistent().has(&DataKey::Admin) {
-            panic!("Already initialized");
+            panic!("Receipt Token Contract already initialized");
         }
         env.storage().persistent().set(&DataKey::Admin, &admin);
         env.storage().persistent().set(&DataKey::Name, &String::from_str(&env, "StillWaitingReceiptToken"));
         env.storage().persistent().set(&DataKey::Symbol, &String::from_str(&env, "SWRT"));
     }
 
+    /// Mints 1 receipt token (SWRT) to the specified address.
+    /// In this simplified version, authorization checks are skipped for demonstration
+    /// purposes but should be managed by the ReceiptStore in production.
     pub fn mint(env: Env, to: Address) {
-        // In a real scenario, we might check for admin authorization
-        // admin.require_auth(); 
-        // But for this simple proof-of-concept, we'll allow the store contract to call this.
-        
         let key = DataKey::Balance(to.clone());
         let balance: i128 = env.storage().persistent().get(&key).unwrap_or(0);
         env.storage().persistent().set(&key, &(balance + 1));
     }
 
+    /// Returns the SWRT balance for a given account.
     pub fn balance(env: Env, account: Address) -> i128 {
         env.storage().persistent().get(&DataKey::Balance(account)).unwrap_or(0)
     }
 
+    /// Returns the human-readable name: StillWaitingReceiptToken
     pub fn name(env: Env) -> String {
         env.storage().persistent().get(&DataKey::Name).unwrap()
     }
 
+    /// Returns the token symbol: SWRT
     pub fn symbol(env: Env) -> String {
         env.storage().persistent().get(&DataKey::Symbol).unwrap()
     }
