@@ -95,32 +95,6 @@ Simulated scanner removes need for physical billing counter.
 ## ⚙️ CI/CD Pipeline
 
 Automated build and test pipeline runs on every push using GitHub Actions.
-<img width="1900" height="1052" alt="image" src="https://github.com/user-attachments/assets/f0f06f02-0cdb-4a13-b2a4-c0108476167e" />
-
-Pipeline steps:
-- install dependencies
-- run tests (Vitest)
-- build project
-
-Workflow status:
-
-![CI Status](https://github.com/DikanshaBindal/Still-Waiting/actions/workflows/main.yml/badge.svg)
-
-View pipeline details:
-https://github.com/DikanshaBindal/Still-Waiting/actions
-
-### Continuous Deployment (CD)
-Vercel automatically deploys the latest version whenever changes are pushed to GitHub.
-
-This ensures the application is always live and production-ready.
-
-![CD Deployment]<img width="1906" height="989" alt="image" src="https://github.com/user-attachments/assets/35289565-0f33-44fb-ae31-786df9140df0" />
-<img width="1887" height="643" alt="image" src="https://github.com/user-attachments/assets/8ac5b1fa-eb87-4380-b97f-a30e66ac6164" />
-
-heyy u
-## ⚙️ CI/CD Pipeline
-
-Automated build and test pipeline runs on every push using GitHub Actions.
 
 ### CI Workflow
 
@@ -343,30 +317,6 @@ graph TD
 ```
 
 ---
-
-# ⚙️ CI/CD Pipeline (Level 4)
-
-This project uses **GitHub Actions** for continuous integration.
-On every push/pull-request, the system automatically:
-- Installs dependencies (`npm install`)
-- Validates the build (`npm run build`)
-- Executes automated tests (`npm run test`)
-
----
-
-# 📱 Mobile Responsiveness (Level 4)
-
-The application is fully optimized for mobile devices, ensuring a seamless scanning experience in-store.
-Validation was performed using browser mobile simulation (iPhone 12/Pixel 5).
-
----
-
-# 🛠 Tech Stack (Updated)
-- **Blockchain**: Stellar Testnet, Soroban (Rust)
-- **Smart Contracts**: Inter-contract calls, Custom Token Logic
-- **CI/CD**: GitHub Actions
-- **Styling**: Glassmorphism, Responsive CSS3
-- **Testing**: Vitest
 
 # 📄 License
 
