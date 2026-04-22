@@ -82,7 +82,6 @@ const mockProducts = [
 
 let cart = [];
 let cartTotal = 0;
-let currentStore = '';
 let walletConnected = false;
 let userPublicKey = '';
 
@@ -123,14 +122,14 @@ window.connectWallet = async function() {
         const connected = await isConnected();
         if (!connected) {
             showError("ERROR: Wallet connection rejected (Freighter missing)");
-            closeWalletModal();
+            window.closeWalletModal();
             return;
         }
         await setAllowed();
         const publicKey = await getPublicKey();
         if (!publicKey) {
             showError("ERROR: wallet connection rejected (Access Denied)");
-            closeWalletModal();
+            window.closeWalletModal();
             return;
         }
         userPublicKey = publicKey;
@@ -139,11 +138,11 @@ window.connectWallet = async function() {
         document.getElementById('wallet-address').textContent = shortenAddress(userPublicKey);
         document.getElementById('connect-wallet-btn').style.display = 'none';
         document.getElementById('wallet-info').style.display = 'flex';
-        closeWalletModal();
+        window.closeWalletModal();
         await fetchBalance();
     } catch (error) {
         showError("ERROR: wallet connection rejected - " + error.message);
-        closeWalletModal();
+        window.closeWalletModal();
     }
 };
 
@@ -173,7 +172,6 @@ async function fetchBalance() {
 }
 
 window.startShopping = function(storeName) {
-    currentStore = storeName;
     document.getElementById('store-title').textContent = `${storeName} Scanner`;
     showView('scanner');
 };
@@ -212,7 +210,7 @@ window.viewCart = function() {
 window.continueShopping = function() { showView('scanner'); };
 
 window.resetApp = function() {
-    cart = []; cartTotal = 0; currentStore = '';
+    cart = []; cartTotal = 0;
     document.getElementById('cart-count').textContent = '0';
     document.getElementById('contract-confirm').textContent = '[ Soroban Receipt Anchored ]';
     document.getElementById('token-status').style.display = 'none';
@@ -232,7 +230,7 @@ window.processPayment = async function() {
         titleText.textContent = "Connecting Wallet";
         statusText.textContent = "Verifying session and fetching account status...";
         const account = await server.loadAccount(userPublicKey).catch((e) => {
-            throw new Error("unfunded");
+            throw new Error("unfunded", { cause: e });
         });
         const nativeBal = account.balances.find(b => b.asset_type === 'native');
         if (!nativeBal || parseFloat(nativeBal.balance) < 0.5) {
@@ -257,7 +255,7 @@ window.processPayment = async function() {
                 StellarSdk.nativeToScVal(Math.floor(Date.now() / 1000), { type: 'u64' })
             );
         } catch(e) {
-            console.warn("Soroban build error");
+            console.warn("Soroban build error", e);
         }
         let builder = new StellarSdk.TransactionBuilder(account, {
             fee: fee.toString(),
@@ -272,7 +270,7 @@ window.processPayment = async function() {
             signedTxXdr = await signTransaction(transaction.toXDR(), { network: 'TESTNET', networkPassphrase: NETWORK_PASSPHRASE });
             if (!signedTxXdr) throw new Error("cancelled");
         } catch (e) {
-            throw new Error("transaction rejected");
+            throw new Error("transaction rejected", { cause: e });
         }
         titleText.textContent = "Submitting Transaction";
         statusText.textContent = "Broadcasting and storing receipt on blockchain...";
@@ -293,7 +291,7 @@ window.processPayment = async function() {
                     horizonMsg = `horizon: ${e.response.data.title}`;
                 }
             }
-            throw new Error(horizonMsg);
+            throw new Error(horizonMsg, { cause: e });
         }
         titleText.textContent = "Transaction Confirmed";
         statusText.textContent = "Receipt anchored to Stellar.";
