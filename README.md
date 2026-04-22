@@ -3,56 +3,54 @@
 A decentralized **zero-queue checkout experience** built on the **Stellar Testnet**.
 Still-Waiting removes the need to stand in billing lines by enabling users to scan items, pay instantly via blockchain, and receive an on-chain verifiable receipt.
 
-This project demonstrates real blockchain integration using **Stellar SDK**, **Freighter Wallet**, and a **Soroban Smart Contract** for receipt verification.
+This project demonstrates real blockchain integration using **Stellar SDK**, **Freighter Wallet**, and **Soroban Smart Contracts**.
 
 ---
 
 # 🌐 Live Demo
 
-👉 [https://still-waiting-one.vercel.app/](https://still-waiting-one.vercel.app/)
-## 🎥 Demo Video
+👉 https://still-waiting-one.vercel.app/
+
+---
+
+# 🎥 Demo Video
 
 1-minute walkthrough showing:
 
-• wallet connect  
-• product scan simulation  
-• payment transaction via Stellar  
-• transaction confirmation  
-• QR receipt generation  
+* wallet connection
+* product scan simulation
+* payment via Stellar
+* transaction confirmation
+* QR receipt generation
 
-👉 Video:
-https://github.com/user-attachments/assets/1c5a30ff-c0ba-4e0d-b895-a6574afa97a6
+👉 https://github.com/user-attachments/assets/1c5a30ff-c0ba-4e0d-b895-a6574afa97a6
 
 ---
 
 # 🚀 Problem Statement
 
-In supermarkets and retail stores (Zara, Zudio, etc.), customers waste significant time waiting in billing queues.
+Customers in retail stores (Zara, Zudio, etc.) waste time standing in billing queues.
 
-Even self-checkout systems still create bottlenecks due to:
+Even self-checkout systems suffer from:
 
-• Limited scanning counters
-• Payment delays
-• Manual verification
-• Centralized billing systems
+* limited counters
+* slow payments
+* manual verification
+* centralized bottlenecks
 
-Still-Waiting eliminates queues completely by enabling **decentralized checkout directly from the user’s device**.
+Still-Waiting eliminates queues through **decentralized checkout from user devices**.
 
 ---
 
 # ⚡ Solution Overview
 
-Still-Waiting provides a **blockchain-powered checkout flow**:
-
 1. User enters store digitally
-2. Scans products using mobile/web interface
-3. Items are added to cart instantly
-4. User pays via Stellar blockchain
+2. Scans products
+3. Cart updates instantly
+4. Payment via Stellar blockchain
 5. Transaction recorded on-chain
-6. Soroban smart contract stores receipt hash
-7. QR receipt shown for exit verification
-
-No billing counter required.
+6. Smart contract stores receipt
+7. QR receipt for exit verification
 
 ---
 
@@ -60,41 +58,35 @@ No billing counter required.
 
 ### Multi-Wallet Support
 
-Users can connect and switch between multiple Stellar wallets using Freighter.
+Connect and switch between multiple wallets using Freighter.
 
 ### Real Blockchain Payments
 
-Payments executed on **Stellar Testnet** using XLM transactions.
+Transactions executed on **Stellar Testnet (XLM)**.
 
-### Soroban Smart Contract Integration
+### Smart Contract Integration
 
-On-chain receipt storage for tamper-proof purchase verification.
+Receipts stored on-chain for tamper-proof verification.
 
-### Transaction Status Visibility
+### Transaction Feedback
 
-Users receive clear feedback:
-• awaiting signature
-• transaction success
-• transaction hash generated
-• receipt verification status
+* awaiting signature
+* success confirmation
+* transaction hash
+* receipt verification
 
-### Error Handling System
+### Error Handling
 
-Handles common blockchain interaction errors:
-
-• wallet connection rejected
-• insufficient balance
-• transaction rejected
-• network failure
-
-### Zero Queue Experience (Concept Prototype)
-
-Simulated scanner removes need for physical billing counter.
+* wallet rejection
+* insufficient balance
+* network failure
+* transaction rejection
 
 ---
-## ⚙️ CI/CD Pipeline
 
-Automated build and test pipeline runs on every push using GitHub Actions.
+# ⚙️ CI/CD Pipeline
+
+Automated pipeline runs on every push using GitHub Actions.
 
 ### CI Workflow
 
@@ -110,53 +102,53 @@ Automated build and test pipeline runs on every push using GitHub Actions.
 
 ![CI Pipeline](https://github.com/user-attachments/assets/f0f06f02-0cdb-4a13-b2a4-c0108476167e)
 
-View pipeline details:
-https://github.com/DikanshaBindal/Still-Waiting/actions
+👉 https://github.com/DikanshaBindal/Still-Waiting/actions
 
 ---
 
-## 🚀 Continuous Deployment (CD)
+# 🚀 Continuous Deployment (CD)
 
-The project uses **Vercel for automatic deployment**.
+The app is deployed using **Vercel**.
 
-Every push to the `main` branch triggers:
+Every push to `main` triggers:
 
-* Automatic build
-* Production deployment
-* Live update of the app
+* automatic build
+* production deployment
+* live updates
 
-### CD Deployment Proof
+### Deployment Proof
 
 ![Vercel Deployment](https://github.com/user-attachments/assets/35289565-0f33-44fb-ae31-786df9140df0)
 
 ![Deployment History](https://github.com/user-attachments/assets/8ac5b1fa-eb87-4380-b97f-a30e66ac6164)
 
+---
 
 # 🛠 Tech Stack
 
-### Blockchain Layer
+### Blockchain
 
-• Stellar Testnet
-• Soroban Smart Contracts (Rust)
-• Stellar SDK
-• Horizon API
+* Stellar Testnet
+* Soroban (Rust)
+* Stellar SDK
+* Horizon API
 
-### Wallet Integration
+### Wallet
 
-• Freighter Wallet
-• @stellar/freighter-api
+* Freighter
+* @stellar/freighter-api
 
 ### Frontend
 
-• HTML
-• CSS (glassmorphism UI)
-• JavaScript (modular structure)
-• Vite bundler
+* HTML
+* CSS (Glassmorphism UI)
+* JavaScript
+* Vite
 
 ### Deployment
 
-• Vercel (production hosting)
-• GitHub (version control)
+* Vercel
+* GitHub
 
 ---
 
@@ -164,160 +156,82 @@ Every push to the `main` branch triggers:
 
 ### 1️⃣ Store Selection
 
-User selects a store connected to Stellar node.
-<img width="1919" height="1040" alt="image" src="https://github.com/user-attachments/assets/9a0e088e-2f62-4cdc-814a-0277041a5742" />
-<img width="1918" height="1048" alt="image" src="https://github.com/user-attachments/assets/cd1f05ff-303b-4929-a8e8-b2ba0523d512" />
-<img width="1919" height="1046" alt="image" src="https://github.com/user-attachments/assets/26a0948c-1674-448c-a63f-a6c28a8a83c5" />
+![Store](https://github.com/user-attachments/assets/9a0e088e-2f62-4cdc-814a-0277041a5742)
 
 ### 2️⃣ Product Scanning
 
-Simulated scanning system adds items to cart.
-<img width="1918" height="1034" alt="image" src="https://github.com/user-attachments/assets/8e6ccc1d-f8d5-4307-bd10-398048b93b2b" />
+![Scan](https://github.com/user-attachments/assets/8e6ccc1d-f8d5-4307-bd10-398048b93b2b)
 
 ### 3️⃣ Cart Summary
 
-Total price calculated dynamically.
-<img width="1919" height="1048" alt="image" src="https://github.com/user-attachments/assets/3b06403b-7277-4f24-8cd5-bf0ac473cf85" />
+![Cart](https://github.com/user-attachments/assets/3b06403b-7277-4f24-8cd5-bf0ac473cf85)
 
-### 4️⃣ Payment via Stellar
+### 4️⃣ Payment
 
-Freighter wallet prompts transaction signature.
-<img width="1919" height="1044" alt="image" src="https://github.com/user-attachments/assets/e12c4673-2735-4b19-87cc-a6966fec510d" />
-<img width="1913" height="1037" alt="image" src="https://github.com/user-attachments/assets/ac84fa4a-322e-43da-8777-45a31400b870" />
-<img width="1919" height="1135" alt="image" src="https://github.com/user-attachments/assets/60df86a8-8f8e-427b-acd8-cf4405b0c029" />
+![Payment](https://github.com/user-attachments/assets/e12c4673-2735-4b19-87cc-a6966fec510d)
 
-### 5️⃣ On-chain Receipt
+### 5️⃣ Receipt
 
-Transaction hash stored using Soroban contract.
-<img width="1919" height="1039" alt="image" src="https://github.com/user-attachments/assets/7eafd960-78fa-489c-bb54-5e5387884833" />
+![Receipt](https://github.com/user-attachments/assets/7eafd960-78fa-489c-bb54-5e5387884833)
 
-### 6️⃣ Exit Verification QR
+### 6️⃣ QR Verification
 
-Blockchain receipt acts as proof of purchase.
-<img width="1919" height="1035" alt="image" src="https://github.com/user-attachments/assets/05fbade3-0c14-4ee6-b3e8-7c2256809e79" />
----
-## 📱 Mobile Responsive View (Level 4)
-
-Still-Waiting UI adapts seamlessly across mobile devices.
-
-Mobile UI : <img width="527" height="967" alt="image" src="https://github.com/user-attachments/assets/8c760899-09b4-4fcd-85c2-7f323a08acd8" />
+![QR](https://github.com/user-attachments/assets/05fbade3-0c14-4ee6-b3e8-7c2256809e79)
 
 ---
 
-### 7️⃣ SWRT Receipt Token (Level 4 Feature)
-Each purchase now mints a unique **StillWaiting Receipt Token (SWRT)**. This tokenized receipt acts as:
-- Digital proof of ownership
-- Loyalty record
-- On-chain verifiable return authorization
+# 📱 Mobile Responsive View
 
-### 8️⃣ Inter-Contract Communication (Level 4 Feature)
-The system architecture now uses **Inter-Contract Invocations**:
-1. **ReceiptStore** contract receives payment details.
-2. **ReceiptStore** calls the **ReceiptToken** contract.
-3. **ReceiptToken** mints 1 SWRT to the user's wallet.
+![Mobile View](https://github.com/user-attachments/assets/8c760899-09b4-4fcd-85c2-7f323a08acd8)
 
 ---
-## 🪙 Receipt Token Contract (Level 4 Upgrade)
 
-Still-Waiting now includes a Soroban token contract that mints a blockchain-based receipt token after successful payment.
+# 🪙 SWRT Receipt Token (Level 4)
 
-Token Name:
-StillWaitingReceiptToken
+Each purchase mints a **StillWaiting Receipt Token (SWRT)**:
 
-Symbol:
-SWRT
+* digital proof of purchase
+* loyalty tracking
+* future NFT upgrade potential
 
-Each successful checkout triggers an inter-contract call from the receipt_store contract to the receipt_token contract.
+---
 
-Purpose:
-• acts as digital proof of purchase
-• enables loyalty programs
-• enables future NFT receipt upgrade
-• demonstrates Soroban composability
+# 🔗 Inter-Contract Architecture
 
-### Contract Architecture
+1. ReceiptStore contract receives payment
+2. Calls ReceiptToken contract
+3. Token minted to user wallet
 
-payment confirmed
-↓
-receipt_store contract
-↓
-inter-contract call
-↓
-receipt_token contract
-↓
-token minted to wallet
+---
 
-# 🏗 Architecture (Level 4)
+# 🧪 Testing
 
-HEAD
-```
-Still-Waiting
-│
-├── contracts/
-│   └── receipt_store/
-│       ├── Cargo.toml
-│       └── src/lib.rs
-│
-├── src (if modularized)
-│
-├── index.html
-├── app.js
-├── index.css
-├── package.json
-├── vite.config.js
-└── README.md
-```
-## 🧪 Tests
+Automated tests using **Vitest**:
 
-This project includes automated unit tests using **Vitest** to verify core functionality of the mini dApp.
-<img width="1307" height="607" alt="Screenshot 2026-04-15 103951" src="https://github.com/user-attachments/assets/5191da3e-94c2-430d-bef1-3b99c19c877c" />
-### Tests included
-- cart calculation logic
-- transaction object validation
-- wallet formatting checks
-- basic application flow validation
+* cart logic
+* transaction validation
+* wallet formatting
+* flow validation
 
 ### Run tests locally
 
 ```bash
 npm run test
+```
+
+---
 
 # 🧪 How to Run Locally
 
-Clone repository:
-
-```
+```bash
 git clone https://github.com/DikanshaBindal/Still-Waiting
 cd Still-Waiting
-```
-
-Install dependencies:
-
-```
 npm install
-```
-
-Run development server:
-
-```
 npm run dev
-```
-
-Build production version:
-
-```
-npm run build
-```mermaid
-graph TD
-    A[User Wallet] -->|Payment| B(Stellar Network)
-    B -->|Success| C[ReceiptStore Contract]
-    C -->|Inter-Contract Call| D[ReceiptToken Contract]
-    D -->|Mint SWRT| A
-6dc7c2d (docs: update README with Level 4 architecture and features)
 ```
 
 ---
 
 # 📄 License
 
-This project is developed for educational and research purposes as part of Stellar Bootcamp.
+This project is developed for educational purposes as part of Stellar Bootcamp.
