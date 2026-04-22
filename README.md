@@ -115,6 +115,48 @@ Vercel automatically deploys the latest version whenever changes are pushed to G
 This ensures the application is always live and production-ready.
 
 ![CD Deployment]<img width="1906" height="989" alt="image" src="https://github.com/user-attachments/assets/35289565-0f33-44fb-ae31-786df9140df0" />
+<img width="1887" height="643" alt="image" src="https://github.com/user-attachments/assets/8ac5b1fa-eb87-4380-b97f-a30e66ac6164" />
+
+heyy u
+## ⚙️ CI/CD Pipeline
+
+Automated build and test pipeline runs on every push using GitHub Actions.
+
+### CI Workflow
+
+* Install dependencies
+* Run tests (Vitest)
+* Build project
+
+### CI Status
+
+![CI Status](https://github.com/DikanshaBindal/Still-Waiting/actions/workflows/main.yml/badge.svg)
+
+### CI Pipeline Screenshot
+
+![CI Pipeline](https://github.com/user-attachments/assets/f0f06f02-0cdb-4a13-b2a4-c0108476167e)
+
+View pipeline details:
+https://github.com/DikanshaBindal/Still-Waiting/actions
+
+---
+
+## 🚀 Continuous Deployment (CD)
+
+The project uses **Vercel for automatic deployment**.
+
+Every push to the `main` branch triggers:
+
+* Automatic build
+* Production deployment
+* Live update of the app
+
+### CD Deployment Proof
+
+![Vercel Deployment](https://github.com/user-attachments/assets/35289565-0f33-44fb-ae31-786df9140df0)
+
+![Deployment History](https://github.com/user-attachments/assets/8ac5b1fa-eb87-4380-b97f-a30e66ac6164)
+
 
 # 🛠 Tech Stack
 
