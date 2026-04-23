@@ -409,4 +409,3 @@ p {
 .store-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }  
 .card { margin-bottom: 0 !important; } 
   
-body { background-image: radial-gradient(circle at 15% 50%, rgba(88, 166, 255, 0.15), transparent 35%), radial-gradient(circle at 85% 30%, rgba(46, 160, 67, 0.1), transparent 35%), radial-gradient(circle at 50% 100%, rgba(139, 148, 158, 0.1), transparent 40%) !important; } 
