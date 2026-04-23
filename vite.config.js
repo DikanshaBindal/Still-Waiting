@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/Still-Waiting/'
+  base: process.env.GITHUB_ACTIONS ? '/Still-Waiting/' : '/'
 })
