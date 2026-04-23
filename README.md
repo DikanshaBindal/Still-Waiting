@@ -118,9 +118,8 @@ Every push to `main` triggers:
 
 ### Deployment Proof
 
-![Vercel Deployment](https://github.com/user-attachments/assets/35289565-0f33-44fb-ae31-786df9140df0)
+<img width="1893" height="1082" alt="image" src="https://github.com/user-attachments/assets/2d3842d5-e293-4b93-a6a2-26fe2c31c00c" />
 
-![Deployment History](https://github.com/user-attachments/assets/8ac5b1fa-eb87-4380-b97f-a30e66ac6164)
 
 ---
 
