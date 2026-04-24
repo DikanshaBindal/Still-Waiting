@@ -35,7 +35,7 @@ const renderTransactionHistory = (history) => {
     const list = document.getElementById('recent-tx-list');
     if (!section || !list) return;
 
-    if (history.length > 0) {
+    if (history.length > 0 && walletConnected) {
         section.style.display = 'block';
         list.innerHTML = history.map(tx => `
             <div class="card" style="padding: 10px; font-size: 0.8rem; background: rgba(255,255,255,0.03);">
@@ -147,6 +147,7 @@ window.connectWallet = async function() {
         document.getElementById('wallet-info').style.display = 'flex';
         window.closeWalletModal();
         await fetchBalance();
+        renderTransactionHistory(loadFromCache('history') || []);
     } catch (error) {
         showError("ERROR: wallet connection rejected - " + error.message);
         window.closeWalletModal();
