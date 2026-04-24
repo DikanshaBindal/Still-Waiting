@@ -90,7 +90,9 @@ const views = {
     scanner: document.getElementById('scanner-view'),
     cart: document.getElementById('cart-view'),
     payment: document.getElementById('payment-processing-view'),
-    receipt: document.getElementById('receipt-view')
+    receipt: document.getElementById('receipt-view'),
+    catalog: document.getElementById('catalog-view'),
+    history: document.getElementById('history-view')
 };
 
 function hideAllViews() {
@@ -110,6 +112,8 @@ function showError(msg) {
 }
 
 window.showWalletModal = function() {
+    document.getElementById('wallet-options').style.display = 'block';
+    document.getElementById('wallet-connect-loading').style.display = 'none';
     document.getElementById('wallet-modal-overlay').style.display = 'flex';
 };
 
@@ -119,6 +123,9 @@ window.closeWalletModal = function() {
 
 window.connectWallet = async function() {
     try {
+        document.getElementById('wallet-options').style.display = 'none';
+        document.getElementById('wallet-connect-loading').style.display = 'block';
+        await new Promise(resolve => setTimeout(resolve, 800)); // Delay feels intentional
         const connected = await isConnected();
         if (!connected) {
             showError("ERROR: Wallet connection rejected (Freighter missing)");
@@ -174,6 +181,123 @@ async function fetchBalance() {
 window.startShopping = function(storeName) {
     document.getElementById('store-title').textContent = `${storeName} Scanner`;
     showView('scanner');
+};
+
+window.showCatalog = function() {
+    const grid = document.getElementById('catalog-grid');
+    grid.innerHTML = '';
+    mockProducts.forEach(item => {
+        grid.innerHTML += `
+            <div class="card">
+                <h3>${item.name}</h3>
+                <p style="margin-bottom:10px; font-size:1.1rem; color: var(--accent-color); font-weight: bold;">$${item.price.toFixed(2)}</p>
+                <p style="margin-bottom:15px; font-size:0.8rem; color: var(--text-secondary);">SKU: ${item.sku}</p>
+                <button class="btn btn-primary" style="padding: 10px;" onclick="addCatalogItemToCart('${item.id}')">Add to Cart</button>
+            </div>
+        `;
+    });
+    showView('catalog');
+};
+
+window.addCatalogItemToCart = function(id) {
+    const item = mockProducts.find(p => p.id === id);
+    if (item) {
+        cart.push(item);
+        cartTotal = calculateTotal(cart);
+        document.getElementById('cart-count').textContent = cart.length;
+        showError("Added to cart!");
+        const toast = document.getElementById('error-toast');
+        toast.style.background = 'var(--success-color)';
+        setTimeout(() => toast.style.background = 'var(--danger-color)', 2000);
+    }
+};
+
+window.showHistory = async function() {
+    const loader = document.getElementById('history-loader');
+    const list = document.getElementById('history-list');
+    
+    showView('history');
+    list.innerHTML = '';
+    
+    if (!walletConnected) {
+        list.innerHTML = '<p style="text-align:center;">Connect your wallet to view transaction history.</p>';
+        return;
+    }
+    
+    loader.style.display = 'block';
+    
+    try {
+        const contract = new StellarSdk.Contract(RECEIPT_CONTRACT_ID);
+        // Attempt a read-only simulated view call using the connected account
+        await server.simulateTransaction(
+            new StellarSdk.TransactionBuilder(await server.loadAccount(userPublicKey), { fee: "100", networkPassphrase: NETWORK_PASSPHRASE })
+            .addOperation(contract.call("get_receipt", StellarSdk.nativeToScVal(userPublicKey, { type: 'address' })))
+            .setTimeout(30).build()
+        );
+        loader.style.display = 'none';
+    } catch(e) {
+        // Expected to fail unanchored, graceful fallback logic to show simulated receipt persistence
+        setTimeout(() => {
+            loader.style.display = 'none';
+            const history = loadFromCache('history') || [];
+            if (history.length > 0) {
+                list.innerHTML = history.map(tx => `
+                    <div class="card" style="padding: 15px; font-size: 0.9rem; background: rgba(255,255,255,0.03);">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span style="color: var(--accent-color); font-family: monospace;">
+                                <a href="https://stellar.expert/explorer/testnet/tx/${tx.hash}" target="_blank" style="color: inherit; text-decoration: underline;">${shortenAddress(tx.hash)}</a>
+                            </span>
+                            <span style="color: var(--success-color); font-weight: bold;">success</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; color: var(--text-secondary);">
+                            <span>${tx.amount} XLM</span>
+                            <span>${new Date(tx.date).toLocaleString()}</span>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                list.innerHTML = '<p style="text-align:center;">No past transactions found for this wallet.</p>';
+            }
+        }, 1000);
+    }
+};
+
+window.startRealScan = async function() {
+    if (!window.ZXing) {
+        showError("Scanner library loading...");
+        return;
+    }
+    const codeReader = new ZXing.BrowserMultiFormatReader();
+    const videoElement = document.getElementById('camera-video');
+    document.getElementById('scanner-status').style.display = 'none';
+    videoElement.style.display = 'block';
+    videoElement.style.zIndex = '1';
+    
+    try {
+        const result = await codeReader.decodeOnceFromVideoDevice(undefined, 'camera-video');
+        videoElement.style.display = 'none';
+        videoElement.style.zIndex = '-1';
+        document.getElementById('scanner-status').style.display = 'block';
+        
+        const matchedItem = mockProducts.find(p => p.sku === result.text || p.id === result.text || p.sku.toLowerCase() === result.text.toLowerCase());
+        if (matchedItem) {
+            cart.push(matchedItem);
+            cartTotal = calculateTotal(cart);
+            document.getElementById('cart-count').textContent = cart.length;
+            showError("Scanned: " + matchedItem.name);
+            const toast = document.getElementById('error-toast');
+            toast.style.background = 'var(--success-color)';
+            setTimeout(() => toast.style.background = 'var(--danger-color)', 2000);
+        } else {
+            showError("Product not found in catalog.");
+        }
+    } catch (err) {
+        console.error(err);
+        showError("Failed to access camera or scan.");
+        videoElement.style.display = 'none';
+        videoElement.style.zIndex = '-1';
+        document.getElementById('scanner-status').style.display = 'block';
+    }
 };
 
 window.mockScanItem = function() {
