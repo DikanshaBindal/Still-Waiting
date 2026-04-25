@@ -169,14 +169,14 @@
       <button class="btn" style="margin-top: 20px;" onclick="showView('storeSelect')">Back to Stores</button>
     </div>
 
-    <!-- Footer links area grouped safely -->
-    <div style="margin-top: 40px; padding: 20px 0; display: flex; flex-direction: column; gap: 10px; width: 100%;">
-      <div style="text-align: center;">
-        <a href="guard.html" style="color: var(--text-secondary); font-size: 0.8rem; text-decoration: none; padding: 5px 15px; border: 1px solid var(--surface-border); border-radius: 20px; background: rgba(255,255,255,0.05);">Switch to Guard View</a>
-      </div>
-      <div style="text-align: center; color: var(--text-secondary); font-size: 0.8rem; margin-top: 20px;">
-         <span style="border: 1px solid var(--surface-border); padding: 5px 10px; border-radius: 10px; background: rgba(0,0,0,0.5);">Contract: <code id="ui-contract-address" style="color: var(--accent-color);">Loading...</code></span>
-      </div>
+    <!-- Guard View Button -->
+    <div style="margin-top: 40px; padding: 20px 0; display: flex; justify-content: center; width: 100%;">
+      <a href="guard.html" style="color: var(--text-secondary); font-size: 0.8rem; text-decoration: none; padding: 5px 15px; border: 1px solid var(--surface-border); border-radius: 20px; background: rgba(255,255,255,0.05);">Switch to Guard View</a>
+    </div>
+
+    <!-- Contract Address Pinned to Bottom -->
+    <div style="position: fixed; bottom: 12px; left: 0; right: 0; text-align: center; color: var(--text-secondary); font-size: 0.75rem; z-index: 100;">
+       <span style="border: 1px solid var(--surface-border); padding: 4px 10px; border-radius: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);">Contract: <code id="ui-contract-address" style="color: var(--accent-color);">Loading...</code></span>
     </div>
     <!-- Wallet Connect Modal -->
     <div id="wallet-modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 1000; justify-content: center; align-items: center;">
