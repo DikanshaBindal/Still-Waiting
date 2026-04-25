@@ -170,26 +170,12 @@ ReceiptToken::mint(buyer_address, 1)
 User receives QR receipt
 ```
 
-### Deployed Contract Addresses (Stellar Testnet)
-
-| Contract | Contract ID |
-|---|---|
-| `ReceiptStore` | *(add your deployed contract ID here)* |
-| `ReceiptToken` | *(add your deployed contract ID here)* |
-
-> 💡 To find your contract IDs, run:
-> ```bash
-> stellar contract deploy --wasm target/wasm32-unknown-unknown/release/receipt_store.wasm --network testnet
-> stellar contract deploy --wasm target/wasm32-unknown-unknown/release/receipt_token.wasm --network testnet
-> ```
 
 ### Sample Transactions (Testnet)
 
 | Description | Transaction Hash |
 |---|---|
 | Payment + receipt stored on-chain | [`6c6919...a070f`](https://testnet.stellar.expert/explorer/testnet/tx/6c691955fbd07d9c09dae81efd8c4cc510feb90db273746d8cd3b0d8b35a070f) |
-| SWRT token mint call | *(add contract mint tx hash)* |
-| Contract initialization | *(add contract deploy tx hash)* |
 
 > 🔍 View all developer wallet transactions on [Stellar Expert Testnet](https://testnet.stellar.expert/explorer/testnet/account/GB66XSKCNNHE6GUYA7BENANHHUKCHZVEFIBVVFJHAP4OHJ62HVANQEEZ)
 
@@ -373,8 +359,6 @@ npm install
 # Start development server
 npm run dev
 ```
-
-The app will be available at `http://localhost:5173`
 
 ### Build for Production
 
