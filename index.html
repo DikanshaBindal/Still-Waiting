@@ -149,7 +149,7 @@
     <div id="catalog-view" class="view">
       <h2>Product Catalog</h2>
       <p>Browse our products and add them directly to your cart.</p>
-      <div id="catalog-grid" class="store-grid">
+      <div id="catalog-grid" class="store-grid" style="overflow-y: auto; max-height: 50vh; padding-right: 10px;">
         <!-- Products injected by JS -->
       </div>
       <button class="btn" style="margin-top: 20px;" onclick="showView('storeSelect')">Back to Stores</button>
@@ -159,7 +159,7 @@
     <div id="history-view" class="view">
       <h2>Transaction History</h2>
       <p>View your past purchases on the Stellar blockchain.</p>
-      <div id="history-content" style="display: flex; flex-direction: column; gap: 10px;">
+      <div id="history-content" style="display: flex; flex-direction: column; gap: 10px; overflow-y: auto; max-height: 50vh; padding-right: 10px;">
         <div id="history-loader" style="text-align: center; padding: 30px; display: none;">
           <div class="spinner" style="margin: 0 auto 20px auto; width: 40px; height: 40px; border-width: 3px;"></div>
           <p>Fetching on-chain history...</p>
