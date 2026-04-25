@@ -165,7 +165,7 @@ nav .btn:hover::after {
   flex-direction: column;
   margin: 80px auto 40px auto;
   width: 92%;
-  max-width: 380px; /* Reduced max-width */
+  max-width: 800px; /* Restored larger width for general views */
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(28px) saturate(180%);
   padding: 25px;
@@ -180,6 +180,10 @@ nav .btn:hover::after {
 
 .view.active {
   display: flex;
+}
+
+#receipt-view {
+  max-width: 440px; /* Specifically compact size for the receipt box only */
 }
 
 @keyframes fadeIn {
