@@ -429,7 +429,7 @@ window.processPayment = async function() {
         saveToCache('history', updatedHistory);
         if (!contractOp) {
             document.getElementById('contract-confirm').textContent = "[ Payment successful | Soroban Receipt logic simulated ]";
-            document.getElementById('contract-confirm').style.color = "#8b949e"; 
+            document.getElementById('contract-confirm').style.color = "#9A6F00"; 
             document.getElementById('token-status').style.display = 'block'; // Show anyway for demo
         } else {
             document.getElementById('contract-confirm').textContent = "[ Success: Receipt Saved & Token Minted! ]";
