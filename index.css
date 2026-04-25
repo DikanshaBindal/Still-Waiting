@@ -66,7 +66,8 @@ header h1 {
   font-size: 1.5rem;
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  color: var(--text-dark-bg);
+  color: #1A1A2E;
+  text-shadow: 0 1px 3px rgba(255,255,255,0.4);
 }
 
 .wallet-badge {
@@ -107,7 +108,9 @@ header h1 {
 
 /* Nav links */
 nav .btn {
-  color: #F5E6C8 !important;
+  color: #1A1A2E !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 3px rgba(255,255,255,0.4);
   font-family: 'DM Sans', sans-serif !important;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -212,13 +215,14 @@ p {
 }
 
 .card p {
-  color: #C9A84C !important;
+  color: #8B6914 !important;
+  font-weight: 600 !important;
   font-size: 13px !important;
 }
 
 .card p::before {
   content: "● ";
-  color: #C9A84C;
+  color: #8B6914;
 }
 
 /* Buttons */
@@ -251,15 +255,17 @@ p {
 
 /* Footer elements overrides */
 .stellar-tag {
-  color: var(--text-dark-bg) !important;
+  color: #1A1A2E !important;
+  font-weight: 500 !important;
   font-size: 12px !important;
-  opacity: 0.8;
+  opacity: 1 !important;
 }
 
 a[href="guard.html"] {
   background: rgba(255,255,255,0.1) !important;
-  border: 1px solid rgba(255,255,255,0.2) !important;
-  color: var(--text-dark-bg) !important;
+  border: 1px solid rgba(26, 26, 46, 0.4) !important;
+  color: #1A1A2E !important;
+  font-weight: 500 !important;
   border-radius: 999px !important;
   font-family: 'DM Sans', sans-serif !important;
   backdrop-filter: blur(8px);
