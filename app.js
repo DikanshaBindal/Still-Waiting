@@ -336,11 +336,24 @@ window.viewCart = function() {
 window.continueShopping = function() { showView('scanner'); };
 
 window.resetApp = function() {
+    console.log("Resetting app state...");
     cart = []; cartTotal = 0;
-    document.getElementById('cart-count').textContent = '0';
-    document.getElementById('contract-confirm').textContent = '[ Soroban Receipt Anchored ]';
-    document.getElementById('token-status').style.display = 'none';
+    const cartCount = document.getElementById('cart-count');
+    if (cartCount) cartCount.textContent = '0';
+    
+    const contractConfirm = document.getElementById('contract-confirm');
+    if (contractConfirm) {
+        contractConfirm.textContent = '[ Soroban Receipt Anchored ]';
+        contractConfirm.style.color = "#9A6F00";
+    }
+    
+    const tokenStatus = document.getElementById('token-status');
+    if (tokenStatus) tokenStatus.style.display = 'none';
+    
     renderTransactionHistory(loadFromCache('history') || []);
+    
+    // Smooth scroll to top and switch view
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     showView('storeSelect');
 };
 

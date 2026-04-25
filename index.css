@@ -163,17 +163,19 @@ nav .btn:hover::after {
 .view {
   display: none;
   flex-direction: column;
-  margin: auto;
-  width: 90%;
-  max-width: 800px;
+  margin: 80px auto 40px auto;
+  width: 92%;
+  max-width: 380px; /* Reduced max-width */
   background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(24px) saturate(180%);
-  padding: 40px;
+  backdrop-filter: blur(28px) saturate(180%);
+  padding: 25px;
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
   animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   color: var(--text-glass);
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .view.active {
