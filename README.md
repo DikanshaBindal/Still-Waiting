@@ -423,26 +423,25 @@ Still-Waiting/
 
 | User Name | User Email | User Wallet Address | Feedback | Commit ID |
 |---|---|---|---|---|
-| Subhranil Baul | subhranil97@icloud.com | `GBTOPBOVCF5652TCZMN4YDMSBTMYKX7HAA7LBMBBFFDBARZJIY5DHGINT` | Wallet connection took a few seconds with no indication | *(commit hash)* |
-| Tanuja Sharma | tanujasharma0987@gmail.com | `GDTJVOWCKRN6TGFZQRHO6ANQL5PRNYRUWY7GBYM2PBPF7QPG2ULXUIIJ` | Multi-wallet support would be a plus | *(commit hash)* |
-| Abhishek Kumar | abhishekkumar086038@gmail.com | `GCO527YCC6DNDK3K6FN654WXAINDGNB35FUFAN3LURDENIIBD7ZFAJN6` | Real barcode scanning via camera would feel like an actual store | *(commit hash)* |
-| Jayant Vaibhav | jayantvaibhavspj@gmail.com | `GBQI6DPFRFZMTDO4KFUPB5D2F6WCQOZEGEBE7OTBHVXXLD76BJFQN4SR` | A product catalog would be nice | *(commit hash)* |
-| Shashank Rai | shashankrai283@gmail.com | `GD5CCTX45O4DWDT3OQ6IYDH2SK55AGNNSPGWSQMPO5S2WFAIIVTUSWCU` | Transaction history section to view past purchases | *(commit hash)* |
+| Subhranil Baul | subhranil97@icloud.com | `GBTOPBOVCF5652TCZMN4YDMSBTMYKX7HAA7LBMBBFFDBARZJIY5DHGINT` | It would be useful to have a transaction history section where users can view their past purchases and receipts.| *(commit hash)* |
+| Tanuja Sharma | tanujasharma0987@gmail.com | `GDTJVOWCKRN6TGFZQRHO6ANQL5PRNYRUWY7GBYM2PBPF7QPG2ULXUIIJ` | Wallet connections took a few second initially. | *(commit hash)* |
+| Abhishek Kumar | abhishekkumar086038@gmail.com | `GCO527YCC6DNDK3K6FN654WXAINDGNB35FUFAN3LURDENIIBD7ZFAJN6` | product catalog will be nice | *(commit hash)* |
+| Jayant Vaibhav | jayantvaibhavspj@gmail.com | `GBQI6DPFRFZMTDO4KFUPB5D2F6WCQOZEGEBE7OTBHVXXLD76BJFQN4SR` | Better UI/UX for first-time users (onboarding guide)| *(commit hash)* |
+| Shashank Rai | shashankrai283@gmail.com | `GD5CCTX45O4DWDT3OQ6IYDH2SK55AGNNSPGWSQMPO5S2WFAIIVTUSWCU` | Mutli wallet options will be a plus points | *(commit hash)* |
 
 ---
 
 ## 🚀 Next Phase Improvements
 
-Based on feedback collected via feedback form all improvements are **completed and live** at [still-waiting-one.vercel.app](https://still-waiting-one.vercel.app/).
+Based on feedback collected via the [Google Form](https://forms.gle/2kso9YvZbbDfGaKd8). All improvements are **completed and live** at [still-waiting-one.vercel.app](https://still-waiting-one.vercel.app/).
 
-| # | Feedback | What Was Implemented | Commit |
-|---|---|---|---|
-| 1 | New users don't understand what the dApp does | Added 3-step onboarding screen (Connect → Scan → Pay), tooltips on key actions, and descriptive labels throughout | [view commit](https://github.com/DikanshaBindal/Still-Waiting/commit/REPLACE_COMMIT) |
-| 2 | Wallet connection took a few seconds with no feedback | Added instant loading spinner + "Connecting to Freighter..." message on click; timeout fallback after 5s | [view commit](https://github.com/DikanshaBindal/Still-Waiting/commit/REPLACE_COMMIT) |
-| 3 | Better UI/UX needed for first-time users | Improved visual hierarchy, cleaner layout, contextual hints on cart and payment steps | [view commit](https://github.com/DikanshaBindal/Still-Waiting/commit/REPLACE_COMMIT) |
-| 4 | Product catalog missing | New Catalog tab with glassmorphism card grid — name, XLM price, Add to Cart per item | [view commit](https://github.com/DikanshaBindal/Still-Waiting/commit/REPLACE_COMMIT) |
-| 5 | Overall UI needs improvement | Full UI polish pass — typography, color contrast, spacing, glassmorphism depth | [view commit](https://github.com/DikanshaBindal/Still-Waiting/commit/REPLACE_COMMIT) |
-
+| # | Reported By | Feedback | What Was Implemented | Status |
+|---|---|---|---|---|
+| 1 | Subhranil Baul | Transaction history section to view past purchases and receipts | Added History tab fetching on-chain receipts via `get_receipt()` — shows date, items, total XLM, and tx hash linked to Stellar Expert | ✅ Implemented |
+| 2 | Tanuja Sharma | Wallet connection took a few seconds with no feedback | Added instant loading spinner + "Connecting to Freighter..." on click; timeout fallback shown after 5s | ✅ Implemented |
+| 3 | Abhishek Kumar | Product catalog would be nice | Added Catalog tab with glassmorphism card grid — product name, XLM price, Add to Cart per item | ✅ Implemented |
+| 4 | Jayant Vaibhav | Better UI/UX for first-time users (onboarding guide) | Added 3-step onboarding screen (Connect Wallet → Scan & Add → Pay & Exit), tooltips and descriptive labels throughout | ✅ Implemented |
+| 5 | Shashank Rai | Multi-wallet options would be a plus | Added wallet selector with Freighter (active), Albedo and xBull as "Coming Soon" — existing Freighter flow unchanged | ✅ Implemented |
 
 ---
 
