@@ -103,6 +103,7 @@ function showView(viewName) {
     hideAllViews();
     views[viewName].classList.add('active');
 }
+window.showView = showView;
 
 function showError(msg) {
     const toast = document.getElementById('error-toast');
