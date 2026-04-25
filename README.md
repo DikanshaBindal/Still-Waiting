@@ -424,7 +424,7 @@ Still-Waiting/
 | User Name | User Email | User Wallet Address | Feedback | Commit ID |
 |---|---|---|---|---|
 | Subhranil Baul | subhranil97@icloud.com | `GBTOPBOVCF5652TCZMN4YDMSBTMYKX7HAA7LBMBBFFDBARZJIY5DHGINT` | It would be useful to have a transaction history section where users can view their past purchases and receipts.| *(ffd5477503c661548514b9ff6677412670dccc09)* |
-| Tanuja Sharma | tanujasharma0987@gmail.com | `GDTJVOWCKRN6TGFZQRHO6ANQL5PRNYRUWY7GBYM2PBPF7QPG2ULXUIIJ` | Wallet connections took a few second initially. | *(commit hash)* |
+| Tanuja Sharma | tanujasharma0987@gmail.com | `GDTJVOWCKRN6TGFZQRHO6ANQL5PRNYRUWY7GBYM2PBPF7QPG2ULXUIIJ` | Wallet connections took a few second initially. | *(a878b9543cdfc0d5cbf416845e6cfcc4234e60b7)* |
 | Abhishek Kumar | abhishekkumar086038@gmail.com | `GCO527YCC6DNDK3K6FN654WXAINDGNB35FUFAN3LURDENIIBD7ZFAJN6` | product catalog will be nice | *(d3d1a4531fc659b51fb6ee1f3f82d35d5f0674f4)* |
 | Jayant Vaibhav | jayantvaibhavspj@gmail.com | `GBQI6DPFRFZMTDO4KFUPB5D2F6WCQOZEGEBE7OTBHVXXLD76BJFQN4SR` | Better UI/UX for first-time users (onboarding guide)| *(0f6df0b2baeb2db771197e89a986a0032616f52b)* |
 | Shashank Rai | shashankrai283@gmail.com | `GD5CCTX45O4DWDT3OQ6IYDH2SK55AGNNSPGWSQMPO5S2WFAIIVTUSWCU` | Mutli wallet options will be a plus points | *(d9f73d5f42e55d42c71875a551df91fe8bb3d820)* |
